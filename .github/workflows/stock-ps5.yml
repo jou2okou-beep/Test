@@ -1,0 +1,41 @@
+name: Stock PS5
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # toutes les 5 minutes (GitHub peut avoir quelques minutes de retard)
+  workflow_dispatch:         # bouton "Run workflow" pour lancer a la main
+
+concurrency:
+  group: stock-ps5
+  cancel-in-progress: false
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Recupere la memoire du tour precedent (pour ne pas te spammer de notifs)
+      - name: Restaurer l'etat
+        uses: actions/cache/restore@v4
+        with:
+          path: etat.json
+          key: etat-${{ github.run_id }}
+          restore-keys: etat-
+
+      - name: Verifier le stock
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: python bot.py --une-fois
+
+      - name: Sauvegarder l'etat
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: etat.json
+          key: etat-${{ github.run_id }}

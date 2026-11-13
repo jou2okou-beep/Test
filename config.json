@@ -1,0 +1,28 @@
+{
+  "discord_webhook": "COLLE_TON_WEBHOOK_DISCORD_ICI",
+  "intervalle_minutes": 3,
+  "rappel_minutes_si_toujours_en_stock": 30,
+  "produits": [
+    {
+      "nom": "PS5 Digitale + 1 manette (Amazon)",
+      "site": "amazon",
+      "url": "https://www.amazon.fr/dp/B0FN7ZG39D",
+      "prix_max": 600
+    },
+    {
+      "nom": "PS5 Slim Digitale reconditionnée (Sony)",
+      "site": "sony",
+      "url": "https://www.playstation.com/fr-fr/ps5/certified-refurbished-ps5-slim-digital-edition/product/PSD001-PSDE00234_23-PS5GRADEDDMBTOTE/"
+    },
+    {
+      "nom": "PS5 Slim Standard reconditionnée (Sony)",
+      "site": "sony",
+      "url": "https://www.playstation.com/fr-fr/ps5/certified-refurbished-ps5-slim/product/PSD001-PSDE00233_59-PS5GRADEDCLIZSLE/"
+    },
+    {
+      "nom": "PS5 Standard reconditionnée (Sony)",
+      "site": "sony",
+      "url": "https://www.playstation.com/fr-fr/ps5/certified-refurbished/product/PSD001-PSDE01840_63-PS5GRADEDCEC7XZE/"
+    }
+  ]
+}
